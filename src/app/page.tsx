@@ -1,89 +1,89 @@
+'use client';
+
+import React, { useState } from 'react';
 import Image from "next/image";
+import { motion } from 'framer-motion'
+import InteractiveCards from "../components/InteractiveCards";
+import FAQ from "../components/FAQ";
+import SellerSection from "../components/SellerBanner";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white min-h-screen font-sans">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center min-h-[70vh] px-6 py-20 text-center bg-gradient-to-b from-black via-gray-900 to-black">
-        <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight mb-6 uppercase">
-          Unleash Your <span className="text-pink-500">Aura</span>
-        </h1>
-        <p className="text-xl sm:text-2xl max-w-2xl mb-8 font-medium text-gray-200">
-          Fashion that matches your personality. Stand out. Be bold. Be you.
-        </p>
-        <button className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all">
-          Shop the Collection
-        </button>
-        <div className="mt-12">
-          <Image src="/fashion-hero.jpg" alt="Bold fashion" width={600} height={400} className="rounded-2xl shadow-2xl object-cover mx-auto" />
-        </div>
-      </section>
-
-      {/* Personality Quiz Teaser */}
-      <section className="py-16 px-6 bg-gray-900 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">
-          What's Your Fashion Personality?
-        </h2>
-        <p className="text-lg text-gray-300 mb-6 max-w-xl mx-auto">
-          Take our quick quiz to discover your unique style and get personalized recommendations.
-        </p>
-        <button className="bg-white text-black font-bold py-2 px-6 rounded-full text-lg shadow hover:bg-gray-200 transition-all">
-          Take the Quiz
-        </button>
-      </section>
-
-      {/* Featured Collections */}
-      <section className="py-20 px-6 bg-black">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-center uppercase tracking-wide">
-          Featured Collections
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform">
-            <Image src="/collection1.jpg" alt="Street Bold" width={300} height={400} className="rounded-lg mb-4 object-cover" />
-            <h3 className="text-xl font-semibold mb-2">Street Bold</h3>
-            <p className="text-gray-300">Urban looks for the fearless trendsetter.</p>
-          </div>
-          <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform">
-            <Image src="/collection2.jpg" alt="Chic Rebel" width={300} height={400} className="rounded-lg mb-4 object-cover" />
-            <h3 className="text-xl font-semibold mb-2">Chic Rebel</h3>
-            <p className="text-gray-300">Edgy elegance for the modern iconoclast.</p>
-          </div>
-          <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center shadow-lg hover:scale-105 transition-transform">
-            <Image src="/collection3.jpg" alt="Vivid Dreamer" width={300} height={400} className="rounded-lg mb-4 object-cover" />
-            <h3 className="text-xl font-semibold mb-2">Vivid Dreamer</h3>
-            <p className="text-gray-300">Colorful, creative, and unapologetically you.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* About/Brand Section */}
-      <section className="py-16 px-6 bg-gray-900 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 uppercase tracking-wide">
-          About AuraSync
-        </h2>
-        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-          AuraSync is more than fashion—it's a movement. We believe in bold self-expression, fearless individuality, and style that speaks louder than words. Join us and let your aura shine.
-        </p>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="py-16 px-6 bg-black text-center border-t border-gray-800">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-4 uppercase tracking-wide">
-          Join the Movement
-        </h2>
-        <p className="text-gray-300 mb-6">Sign up for exclusive drops, style tips, and more.</p>
-        <form className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="px-4 py-3 rounded-full w-full sm:w-auto text-black focus:outline-none focus:ring-2 focus:ring-pink-500"
-            required
+    <main className="min-h-screen w-full overflow-x-hidden">
+      {/* Hero Section with full background image */}
+      <section className="relative w-full min-h-[600px] h-[100vh] flex flex-col justify-start items-stretch overflow-hidden">
+        {/* Full-size background image */}
+        <div className="absolute inset-0 w-full h-full -z-10">
+          <Image
+            src="/hero-image.jpg"
+            alt="Fashion Model"
+            fill
+            className="object-cover object-center w-full h-full"
+            priority
           />
-          <button type="submit" className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all">
-            Subscribe
-          </button>
-        </form>
+        </div>
+        {/* Content on top of image */}
+        <div className="flex flex-col h-full justify-start">
+          {/* The Navbar is already rendered above by layout, so just add spacing */}
+          <div className="h-24" />
+          <div className="flex flex-col md:flex-row items-center justify-between w-full px-4 md:px-16 pt-8 md:pt-16">
+            {/* Left: Text */}
+            <div className="z-10 max-w-xl w-full md:w-1/2 text-black">
+              <div className="mb-6">
+                <h1 className="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold leading-[1.05] tracking-tight text-black text-left uppercase">
+                  {/* LET'S with gray background and tilt */}
+                  <span className="relative inline-block mb-2">
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[80%] bg-gray-200 rounded-sm -z-10 rotate-[-3deg]" />
+                    LET'S
+                  </span>
+                  <br />
+                  {/* EXPLORE */}
+                  <span className="block">
+                    EXPLORE
+                  </span>
+                  {/* UNIQUE with yellow highlight and star above I */}
+                  <span className="relative inline-block">
+                    <span className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[80%] bg-yellow-300 rounded-sm -z-10 -skew-x-[8deg]" />
+                    <span className="relative">
+                      UN
+                      <span className="relative inline-block">
+                        {/* Star above I */}
+                        <svg className="absolute left-1/2 -translate-x-1/2 -top-6 w-5 h-5" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 2L13.09 8.26L19 9.27L14.5 13.14L15.82 19.02L12 15.77L8.18 19.02L9.5 13.14L5 9.27L10.91 8.26L12 2Z" fill="#FDE68A"/>
+                        </svg>
+                        I
+                      </span>
+                      QUE
+                    </span>
+                  </span>
+                  <br />
+                  {/* CLOTHES. */}
+                  <span className="block">CLOTHES.</span>
+                </h1>
+                <p className="mt-6 text-sm md:text-lg text-black font-medium text-left">
+                  According To Your Style And Preference<br />With AuraSync
+                </p>
+              </div>
+            </div>
+            {/* Right: Empty, since image is background */}
+            <div className="hidden md:block md:w-1/2" />
+          </div>
+        </div>
       </section>
-    </div>
+
+      <InteractiveCards />
+
+      {/* Desktop: Always visible, Mobile: Hidden */}
+      <SellerSection />
+
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Override the Navbar from layout */}
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Navbar />
+      </div>
+    </main>
   );
 }
